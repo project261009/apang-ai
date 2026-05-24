@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aPunk-AI · RPL Core Server</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzA1MGEwZSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgcng9IjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwZTVmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMGZmODgiPmFQPC90ZXh0Pjwvc3ZnPg==" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Scanline overlay effect -->
+  <div class="scanlines" aria-hidden="true"></div>
+  <!-- Background grid -->
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="app-wrapper">
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo-block">
+          <span class="logo-bracket">[</span>
+          <span class="logo-text">aPUNK</span>
+          <span class="logo-dash">-</span>
+          <span class="logo-ai">AI</span>
+          <span class="logo-bracket">]</span>
+        </div>
+        <p class="header-subtitle">RPL Core Virtual Assistant · v2.4.1</p>
+      </div>
+
+      <div class="header-right">
+        <div class="status-cluster">
+          <div class="status-item">
+            <span class="status-dot online" aria-label="Online"></span>
+            <span class="status-label">Server: <strong>Online</strong></span>
+          </div>
+          <div class="status-item">
+            <span class="status-dot pulse" aria-label="Connected"></span>
+            <span class="status-label">API: <strong>Connected</strong></span>
+          </div>
+        </div>
+        <div class="uptime-box">
+          <span class="uptime-label">UPTIME</span>
+          <span class="uptime-value" id="uptime">00:00:00</span>
+        </div>
+        <button class="btn-clear" id="btnClear" title="Clear chat history" aria-label="Clear chat history">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          <span>PURGE</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ═══ TERMINAL BANNER ═══ -->
+    <div class="terminal-banner" role="status">
+      <span class="banner-prefix">&gt;&gt;</span>
+      <span class="banner-text" id="bannerText"></span>
+      <span class="cursor-blink">_</span>
+    </div>
+
+    <!-- ═══ CHAT AREA ═══ -->
+    <main class="chat-container" id="chatContainer" role="log" aria-live="polite" aria-label="Chat history">
+      <!-- Messages injected here by JS -->
+    </main>
+
+    <!-- ═══ INPUT AREA ═══ -->
+    <footer class="input-area">
+      <div class="input-wrapper">
+        <span class="input-prefix" aria-hidden="true">&gt;_</span>
+        <textarea
+          id="userInput"
+          class="chat-input"
+          placeholder="Ketikkan error-mu, Dev... sistem siap memproses."
+          rows="1"
+          maxlength="4000"
+          aria-label="Chat input"
+          autocomplete="off"
+          spellcheck="false"
+        ></textarea>
+        <button class="btn-send" id="btnSend" aria-label="Send message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="input-meta">
+        <span class="char-count"><span id="charCount">0</span>/4000</span>
+        <span class="model-badge">MODEL: gemini-2.5-flash</span>
+        <span class="shortcut-hint">[ ENTER ] kirim &nbsp;·&nbsp; [ SHIFT+ENTER ] baris baru</span>
+      </div>
+    </footer>
+
+  </div><!-- /.app-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>
